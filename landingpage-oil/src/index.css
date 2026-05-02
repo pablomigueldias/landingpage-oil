@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+* {
+  font-family: "Raleway", sans-serif;
+}
+
+@layer components {
+  .bg-color-laranja {
+    background-color: #ff6f00;
+  }
+
+  .bg-image-hero {
+    background-image: url("./img/oil.png");
+  }
+}
