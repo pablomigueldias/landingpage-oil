@@ -21,7 +21,6 @@ const AboutUs = () => {
 
                     Present the most important information about your brand and show what makes it truly unique.</p>
             </div>
-
         </div>
     )
 }

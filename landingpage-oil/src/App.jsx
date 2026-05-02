@@ -6,6 +6,7 @@ import './App.css'
 import Header from './Header'
 import PrincipalSection from './components/PrincipalSection'
 import AboutUs from './components/AboutUs'
+import Services from './components/Services'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -18,6 +19,9 @@ function App() {
       </div>
       <div className="aboutus">
         <AboutUs />
+      </div>
+      <div className="services bg-black h-screen flex items-center flex-col">
+        <Services />
       </div>
     </>
   )
