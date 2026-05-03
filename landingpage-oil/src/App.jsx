@@ -8,6 +8,7 @@ import PrincipalSection from './components/PrincipalSection'
 import AboutUs from './components/AboutUs'
 import Services from './components/Services'
 import Reviews from './components/Reviews'
+import Gallery from './components/Gallery'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -24,6 +25,7 @@ function App() {
       <div className="services bg-black h-full flex items-center flex-col">
         <Services />
         <Reviews />
+        <Gallery />
       </div>
     </>
   )
