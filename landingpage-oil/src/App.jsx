@@ -9,6 +9,7 @@ import AboutUs from './components/AboutUs'
 import Services from './components/Services'
 import Reviews from './components/Reviews'
 import Gallery from './components/Gallery'
+import Contact from './components/Contact'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -26,6 +27,9 @@ function App() {
         <Services />
         <Reviews />
         <Gallery />
+      </div>
+      <div className="container-contato">
+        <Contact />
       </div>
     </>
   )
