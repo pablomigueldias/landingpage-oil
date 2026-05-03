@@ -10,6 +10,7 @@ import Services from './components/Services'
 import Reviews from './components/Reviews'
 import Gallery from './components/Gallery'
 import Contact from './components/Contact'
+import Footer from './components/Footer'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -31,6 +32,11 @@ function App() {
       <div className="container-contato">
         <Contact />
       </div>
+      <div className="container-footer bg-black h-full flex items-center flex-col">
+        <Footer />
+      </div>
+
+
     </>
   )
 }

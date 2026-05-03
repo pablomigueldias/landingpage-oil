@@ -137,7 +137,7 @@ const Contact = () => {
                     </div>
                 </div>
             </div>
-            <div className=' overflow-hidden h-96 w-2/3 border-2 border-orange-600 flex items-center justify-center mx-auto mt-16'>
+            <div className=' overflow-hidden h-96 border-2 border-orange-600 flex items-center justify-center mx-auto mt-16'>
                 <MapContainer center={position} zoom={16} style={{ height: "100%", width: "100%" }}>
                     <TileLayer
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

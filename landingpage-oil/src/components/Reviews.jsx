@@ -5,7 +5,7 @@ const Reviews = () => {
     const carroselRef = useRef(null);
 
     return (
-        <div className='text-white py-20 w-screen flex flex-col items-center justify-center'>
+        <div className='text-white py-20 w-full flex flex-col items-center justify-center'>
             <h2 className='text-5xl font-bold text-center mb-16'>Reviews</h2>
             <div className="w-3/4">
                 <CarroselReviews ref={carroselRef} />
