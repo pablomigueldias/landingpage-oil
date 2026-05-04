@@ -1,7 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import './App.css'
 import Header from './Header'
 import PrincipalSection from './components/PrincipalSection'
@@ -17,26 +14,29 @@ function App() {
 
   return (
     <>
-      <div className="container1 bg-image-hero bg-cover bg-center h-screen">
-        <Header />
+      <Header />
+
+      <div id="hero" className="container1 bg-image-hero bg-cover bg-center h-screen">
         <PrincipalSection />
       </div>
-      <div className="aboutus">
+
+      <div id="aboutus">
         <AboutUs />
       </div>
-      <div className="services bg-black h-full flex items-center flex-col">
+
+      <div id="services" className="bg-black h-full flex items-center flex-col">
         <Services />
-        <Reviews />
-        <Gallery />
+        <Reviews id="reviews" />
+        <Gallery id="gallery" />
       </div>
-      <div className="container-contato">
+
+      <div id="contact" className="container-contato">
         <Contact />
       </div>
-      <div className="container-footer bg-black h-full flex items-center flex-col">
+
+      <div id="footer" className="container-footer bg-black h-full flex items-center flex-col">
         <Footer />
       </div>
-
-
     </>
   )
 }

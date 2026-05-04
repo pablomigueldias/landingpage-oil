@@ -38,7 +38,7 @@ const Contact = () => {
     });
 
     return (
-        <div className=' py-20 px-10'>
+        <div className='py-20 px-10'>
             <h2 className='text-5xl font-bold text-center mb-16'>Any questions?</h2>
 
             <div className="max-w-6xl mx-auto grid grid-cols-2 gap-12">

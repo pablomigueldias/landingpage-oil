@@ -18,7 +18,7 @@ const Header = () => {
     };
 
     return (
-        <header className=" text-white sticky top-0 z-50">
+        <header className=" text-white sticky top-0 z-50 bg-image-hero">
             <div className="flex items-center justify-between px-10 py-4 max-w-7xl mx-auto">
                 <motion.div
                     className="logo"

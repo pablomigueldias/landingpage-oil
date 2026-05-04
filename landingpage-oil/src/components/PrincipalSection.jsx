@@ -53,7 +53,7 @@ const PrincipalSection = () => {
 
     return (
         <motion.div
-            className="container-main-sub flex justify-around mt-16"
+            className="container-main-sub flex justify-around pt-16"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
@@ -70,7 +70,7 @@ const PrincipalSection = () => {
                 </motion.div>
 
                 <motion.h1
-                    className='text-7xl mt-3 text-white font-bold'
+                    className='text-7xl mt-3 text-black font-bold'
                     variants={itemVariants}
                 >
                     Leader in fuel wholesale
@@ -88,16 +88,35 @@ const PrincipalSection = () => {
                     variants={itemVariants}
                 >
                     <motion.button
-                        className='bg-color-laranja text-white px-6 py-3 mt-5 hover:bg-orange-700 transition-colors duration-300 rounded-lg'
-                        whileHover={{ scale: 1.05 }}
+                        className='bg-color-laranja text-white px-6 py-3 mt-5 rounded-lg font-semibold cursor-pointer'
+                        whileHover={{
+                            scale: 1.05,
+                            backgroundColor: '#ff6f00'
+                        }}
                         whileTap={{ scale: 0.95 }}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+                        }}
                     >
                         Contact Us
                     </motion.button>
+
                     <motion.button
-                        className='bg-none border border-white text-white px-6 py-3 mt-5 hover:border-orange-600 hover:text-orange-600 transition-colors duration-300 rounded-lg'
-                        whileHover={{ scale: 1.05, backgroundColor: 'rgba(255, 111, 0, 0.1)' }}
+                        className='border-2 border-white text-white px-6 py-3 mt-5 rounded-lg font-semibold cursor-pointer bg-transparent'
+                        whileHover={{
+                            scale: 1.05,
+                            borderColor: '#ff6f00',
+                            color: '#ff6f00',
+                            backgroundColor: 'rgba(255, 111, 0, 0.1)'
+                        }}
                         whileTap={{ scale: 0.95 }}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })
+                        }}
                     >
                         Our Services
                     </motion.button>
@@ -123,7 +142,7 @@ const PrincipalSection = () => {
                             whileHover={{ y: -5 }}
                         >
                             <motion.h2
-                                className='text-4xl font-bold mb-1 text-orange-600'
+                                className='text-4xl font-bold mb-1 text-white'
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
                                 viewport={{ once: true }}

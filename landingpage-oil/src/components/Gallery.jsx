@@ -35,32 +35,36 @@ const Gallery = () => {
         setSelectedIndex((prev) => (prev - 1 + galleryItems.length) % galleryItems.length);
     };
 
-
     const handleBackdropClick = (e) => {
         if (e.target === e.currentTarget) {
             closeModal();
         }
     };
 
+    const handleImageClick = (e, index) => {
+        e.stopPropagation();
+        e.preventDefault();
+        openModal(index);
+    };
+
     return (
         <div className='text-white py-20'>
             <h2 className='text-5xl font-bold text-center mb-16'>Gallery</h2>
 
-
             <div className="grid grid-cols-3 gap-6 w-3/4 mx-auto">
                 {galleryItems.map((gallery, index) => (
-                    <div 
-                        key={gallery.id} 
-                        className="overflow-hidden cursor-pointer transform hover:scale-105 transition-transform duration-300 group"
-                        onClick={() => openModal(index)}
+                    <div
+                        key={gallery.id}
+                        className="overflow-hidden cursor-pointer transform hover:scale-105 transition-transform duration-300 group rounded-lg"
+                        onClick={(e) => handleImageClick(e, index)}
                     >
-                        <img 
-                            src={gallery.image} 
-                            alt={`Gallery ${gallery.id}`} 
-                            className="w-full h-auto object-cover" 
+                        <img
+                            src={gallery.image}
+                            alt={`Gallery ${gallery.id}`}
+                            className="w-full h-auto object-cover"
                         />
-                        
-                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center group-hover:flex">
+
+                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none group-hover:pointer-events-auto">
                             <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
                             </svg>
@@ -75,7 +79,6 @@ const Gallery = () => {
                     onClick={handleBackdropClick}
                 >
                     <div className="relative w-11/12 h-5/6 max-w-4xl">
-
                         <img
                             src={galleryItems[selectedIndex].image}
                             alt="Full view"
@@ -83,7 +86,10 @@ const Gallery = () => {
                         />
 
                         <button
-                            onClick={closeModal}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                closeModal();
+                            }}
                             className="absolute top-4 right-4 bg-white/20 hover:bg-white/40 text-white rounded-full p-2 transition"
                         >
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -92,7 +98,10 @@ const Gallery = () => {
                         </button>
 
                         <button
-                            onClick={prevImage}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                prevImage();
+                            }}
                             className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white rounded-full p-3 transition"
                         >
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -101,7 +110,10 @@ const Gallery = () => {
                         </button>
 
                         <button
-                            onClick={nextImage}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                nextImage();
+                            }}
                             className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white rounded-full p-3 transition"
                         >
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
