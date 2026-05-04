@@ -21,7 +21,6 @@ const Gallery = () => {
         { id: 6, image: Gallery6 },
     ]
 
-    // Pré-carregar imagens
     React.useEffect(() => {
         galleryItems.forEach((item) => {
             const img = new Image();
@@ -133,7 +132,7 @@ const Gallery = () => {
                         transition={{ duration: 0.3 }}
                         onClick={(e) => handleImageClick(e, index)}
                     >
-                        {/* Placeholder enquanto carrega */}
+
                         {!loadedImages[gallery.id] && (
                             <div className="w-full h-full bg-linear-to-r from-gray-900 via-gray-800 to-gray-900 animate-pulse flex items-center justify-center">
                                 <div className="text-gray-600">Loading...</div>
