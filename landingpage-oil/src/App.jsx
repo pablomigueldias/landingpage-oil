@@ -13,31 +13,31 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
+    <main className="overflow-x-hidden w-full max-w-full">
       <Header />
 
-      <div id="hero" className="container1 bg-image-hero bg-cover bg-center h-screen">
+      <div id="hero" className="container1 bg-image-hero bg-cover bg-center h-screen w-full">
         <PrincipalSection />
       </div>
 
-      <div id="aboutus">
+      <div id="aboutus" className="w-full">
         <AboutUs />
       </div>
-
-      <div id="services" className="bg-black h-full flex items-center flex-col">
+      
+      <div id="services" className="bg-black w-full overflow-hidden flex items-center flex-col">
         <Services />
         <Reviews id="reviews" />
         <Gallery id="gallery" />
       </div>
 
-      <div id="contact" className="container-contato">
+      <div id="contact" className="container-contato w-full">
         <Contact />
       </div>
 
-      <div id="footer" className="container-footer bg-black h-full flex items-center flex-col">
+      <div id="footer" className="container-footer bg-black w-full flex items-center flex-col">
         <Footer />
       </div>
-    </>
+    </main>
   )
 }
 

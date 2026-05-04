@@ -36,18 +36,18 @@ const AboutUs = () => {
 
     return (
         <motion.div
-            className='container-aboutus flex justify-around items-center gap-4 mt-11 mb-11 px-10'
+            className='container-aboutus flex flex-col md:flex-row justify-around items-center gap-4 md:gap-8 mt-6 md:mt-11 mb-6 md:mb-11 px-4 md:px-10 py-8 md:py-0'
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={containerVariants}
         >
             <motion.div
-                className="images-about grid grid-cols-2 w-1/2 gap-3"
+                className="images-about grid grid-cols-2 w-full md:w-1/2 gap-2 md:gap-3"
                 variants={containerVariants}
             >
                 <motion.div
-                    className="overflow-hidden flex flex-col gap-3"
+                    className="overflow-hidden flex flex-col gap-2 md:gap-3"
                     variants={containerVariants}
                 >
                     <motion.div
@@ -92,18 +92,18 @@ const AboutUs = () => {
             </motion.div>
 
             <motion.div
-                className="text-about w-2/6"
+                className="text-about w-full md:w-2/6"
                 variants={containerVariants}
             >
                 <motion.h1
-                    className='text-4xl font-bold mb-2.5 text-black'
+                    className='text-2xl md:text-3xl lg:text-4xl font-bold mb-2.5 md:mb-4 text-black'
                     variants={itemVariants}
                 >
                     About Us
                 </motion.h1>
 
                 <motion.p
-                    className='text-base text-black leading-relaxed'
+                    className='text-sm md:text-base lg:text-base text-black leading-relaxed text-justify'
                     variants={itemVariants}
                 >
                     It's time to make Fuel stand out! Present the most important information about your brand and show what makes it truly unique. Make it clear what people can expect from Fuel and what value you bring to their lives. Whether it's energy, innovation, or attitude — now is the moment to let your Fuel speak for itself. It's time to make Fuel stand out!
@@ -111,9 +111,8 @@ const AboutUs = () => {
                     Present the most important information about your brand and show what makes it truly unique.
                 </motion.p>
 
-                {/* Botão opcional */}
                 <motion.button
-                    className='mt-6 bg-orange-600 text-white px-8 py-3 rounded-lg hover:bg-orange-700 transition-colors duration-300'
+                    className='mt-4 md:mt-6 bg-orange-600 text-white px-6 md:px-8 py-2 md:py-3 rounded-lg hover:bg-orange-700 transition-colors duration-300 text-sm md:text-base w-full md:w-auto'
                     variants={itemVariants}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}

@@ -76,27 +76,27 @@ const Gallery = () => {
 
     return (
         <motion.div
-            className='text-white py-20'
+            className='text-white py-8 md:py-12 lg:py-20 px-4 md:px-6'
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={containerVariants}
         >
             <motion.h2
-                className='text-5xl font-bold text-center mb-16'
+                className='text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8 md:mb-12 lg:mb-16'
                 variants={itemVariants}
             >
                 Gallery
             </motion.h2>
 
             <motion.div
-                className="grid grid-cols-3 gap-6 w-3/4 mx-auto"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 w-full sm:w-11/12 md:w-4/5 lg:w-3/4 mx-auto"
                 variants={containerVariants}
             >
                 {galleryItems.map((gallery, index) => (
                     <motion.div
                         key={gallery.id}
-                        className="overflow-hidden cursor-pointer group rounded-lg"
+                        className="overflow-hidden cursor-pointer group rounded-lg aspect-square"
                         variants={itemVariants}
                         whileHover={{ scale: 1.05 }}
                         transition={{ duration: 0.3 }}
@@ -105,15 +105,15 @@ const Gallery = () => {
                         <img
                             src={gallery.image}
                             alt={`Gallery ${gallery.id}`}
-                            className="w-full h-auto object-cover"
+                            className="w-full h-full object-cover"
                         />
 
                         <motion.div
-                            className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none group-hover:pointer-events-auto"
+                            className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none group-hover:pointer-events-auto rounded-lg"
                             whileHover={{ opacity: 1 }}
                         >
                             <motion.svg
-                                className="w-12 h-12 text-white"
+                                className="w-8 sm:w-10 md:w-12 h-8 sm:h-10 md:h-12 text-white"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
@@ -129,7 +129,7 @@ const Gallery = () => {
             <AnimatePresence>
                 {selectedIndex !== null && (
                     <motion.div
-                        className="fixed inset-0 bg-black/90 flex items-center justify-center z-50"
+                        className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4"
                         onClick={handleBackdropClick}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -137,7 +137,7 @@ const Gallery = () => {
                         transition={{ duration: 0.3 }}
                     >
                         <motion.div
-                            className="relative w-11/12 h-5/6 max-w-4xl"
+                            className="relative w-full h-5/6 md:h-4/5 max-w-2xl md:max-w-4xl"
                             variants={modalVariants}
                             initial="hidden"
                             animate="visible"
@@ -147,7 +147,7 @@ const Gallery = () => {
                             <motion.img
                                 src={galleryItems[selectedIndex].image}
                                 alt="Full view"
-                                className="w-full h-full object-contain"
+                                className="w-full h-full object-contain rounded-lg"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
@@ -160,11 +160,11 @@ const Gallery = () => {
                                     e.stopPropagation();
                                     closeModal();
                                 }}
-                                className="absolute top-4 right-4 bg-white/20 hover:bg-white/40 text-white rounded-full p-2 transition"
+                                className="absolute -top-12 md:top-4 right-0 md:right-4 bg-white/20 hover:bg-white/40 text-white rounded-full p-2 md:p-3 transition"
                                 whileHover={{ scale: 1.1, backgroundColor: 'rgba(255, 255, 255, 0.4)' }}
                                 whileTap={{ scale: 0.95 }}
                             >
-                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-5 md:w-6 h-5 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                                 </svg>
                             </motion.button>
@@ -174,11 +174,11 @@ const Gallery = () => {
                                     e.stopPropagation();
                                     prevImage();
                                 }}
-                                className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white rounded-full p-3 transition"
+                                className="hidden sm:flex absolute left-0 sm:left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white rounded-full p-2 md:p-3 transition"
                                 whileHover={{ scale: 1.1, backgroundColor: 'rgba(255, 255, 255, 0.4)' }}
                                 whileTap={{ scale: 0.95 }}
                             >
-                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-5 md:w-6 h-5 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                                 </svg>
                             </motion.button>
@@ -188,17 +188,17 @@ const Gallery = () => {
                                     e.stopPropagation();
                                     nextImage();
                                 }}
-                                className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white rounded-full p-3 transition"
+                                className="hidden sm:flex absolute right-0 sm:right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white rounded-full p-2 md:p-3 transition"
                                 whileHover={{ scale: 1.1, backgroundColor: 'rgba(255, 255, 255, 0.4)' }}
                                 whileTap={{ scale: 0.95 }}
                             >
-                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-5 md:w-6 h-5 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                 </svg>
                             </motion.button>
 
                             <motion.div
-                                className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/20 text-white px-4 py-2 rounded-full text-sm"
+                                className="absolute -bottom-12 md:bottom-4 left-1/2 -translate-x-1/2 bg-white/20 text-white px-3 md:px-4 py-2 rounded-full text-xs md:text-sm"
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.2 }}

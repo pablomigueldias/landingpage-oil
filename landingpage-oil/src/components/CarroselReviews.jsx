@@ -1,17 +1,16 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react'
+import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
-import image1 from '../img/3.png'
-import image2 from '../img/4.png'
-import image3 from '../img/5.png'
-import image4 from '../img/6.png'
+import image1 from '../img/3.png';
+import image2 from '../img/4.png';
+import image3 from '../img/5.png';
+import image4 from '../img/6.png';
 
-import aspaaberta from '../img/aspa-aberta.svg'
-import aspafechada from '../img/aspa-fechada.svg'
+import aspaaberta from '../img/aspa-aberta.svg';
+import aspafechada from '../img/aspa-fechada.svg';
 
-
-const Carrosel = forwardRef((props, ref) => {
+const CarroselReviews = forwardRef((props, ref) => {
     const swiperRef = useRef(null);
 
     useImperativeHandle(ref, () => ({
@@ -27,54 +26,57 @@ const Carrosel = forwardRef((props, ref) => {
     ];
 
     return (
-        <div className="h-96">
+        <div className="w-full">
             <Swiper
                 ref={swiperRef}
                 modules={[Autoplay]}
                 loop={true}
-                spaceBetween={20}
-                slidesPerView={3}
+                breakpoints={{
+                    320: { slidesPerView: 1, spaceBetween: 15 },
+                    768: { slidesPerView: 2, spaceBetween: 20 },
+                    1024: { slidesPerView: 3, spaceBetween: 30 },
+                }}
                 autoplay={{
                     delay: 4000,
                     disableOnInteraction: false,
                 }}
-                className="w-full h-full"
+                className="w-full py-4"
             >
                 {reviews.map((review) => (
-                    <SwiperSlide key={review.id} className="flex justify-center items-center">
-                        <div className="w-96 h-full border border-orange-600 rounded-lg flex flex-col justify-between items-center p-6 text-white relative">
+                    <SwiperSlide key={review.id} className="flex justify-center h-auto">
+
+                 
+                        <div className="w-full max-w-sm h-full min-h-100 border border-orange-600 rounded-4xl flex flex-col items-center p-8 text-white relative bg-black">
 
                             <img
                                 src={aspaaberta}
                                 alt="Aspa"
-                                className="w-8 h-8 absolute top-4 left-4 opacity-60"
+                                className="w-8 h-8 absolute top-6 left-6 opacity-60"
                             />
 
-                            <div className="rounded-full overflow-hidden w-20 h-20 border-2 border-orange-600 mt-8">
+                            <div className="rounded-full overflow-hidden w-24 h-24 border-2 border-orange-600 mt-2 mb-6 shrink-0">
                                 <img src={review.perfil} alt={review.name} className="w-full h-full object-cover" />
                             </div>
 
-                            <div className="text-center flex-1 flex flex-col justify-center px-2">
-                                <p className="text-sm leading-relaxed mb-4 opacity-90">
+                            <div className="text-center flex flex-col grow justify-between w-full px-2 z-10">
+                                <p className="text-sm md:text-base leading-relaxed mb-6 opacity-90 wrap-break-word">
                                     "{review.description}"
                                 </p>
-                                <h3 className="text-lg font-bold">{review.name}</h3>
+                                <h3 className="text-xl font-bold mt-auto">{review.name}</h3>
                             </div>
 
                             <img
                                 src={aspafechada}
                                 alt="Aspa"
-                                className="w-8 h-8 absolute bottom-4 right-4 opacity-60 transform"
+                                className="w-8 h-8 absolute bottom-6 right-6 opacity-60"
                             />
                         </div>
                     </SwiperSlide>
                 ))}
             </Swiper>
-
-
         </div>
     );
 });
 
-Carrosel.displayName = 'Carrosel';
-export default Carrosel;
+CarroselReviews.displayName = 'CarroselReviews';
+export default CarroselReviews;
