@@ -10,6 +10,7 @@ import Gallery6 from '../img/Gallery6.png'
 
 const Gallery = () => {
     const [selectedIndex, setSelectedIndex] = useState(null);
+    const [loadedImages, setLoadedImages] = useState({});
 
     const galleryItems = [
         { id: 1, image: Gallery1 },
@@ -19,6 +20,36 @@ const Gallery = () => {
         { id: 5, image: Gallery5 },
         { id: 6, image: Gallery6 },
     ]
+
+    // Pré-carregar imagens
+    React.useEffect(() => {
+        galleryItems.forEach((item) => {
+            const img = new Image();
+            img.src = item.image;
+            img.onload = () => {
+                setLoadedImages(prev => ({
+                    ...prev,
+                    [item.id]: true
+                }));
+            };
+            img.onerror = () => {
+                console.error(`Erro ao carregar imagem ${item.id}`);
+            };
+        });
+    }, []);
+
+    React.useEffect(() => {
+        if (selectedIndex !== null) {
+            const img = new Image();
+            img.src = galleryItems[selectedIndex].image;
+            img.onload = () => {
+                setLoadedImages(prev => ({
+                    ...prev,
+                    [galleryItems[selectedIndex].id]: true
+                }));
+            };
+        }
+    }, [selectedIndex]);
 
     const openModal = (index) => {
         setSelectedIndex(index);
@@ -96,16 +127,28 @@ const Gallery = () => {
                 {galleryItems.map((gallery, index) => (
                     <motion.div
                         key={gallery.id}
-                        className="overflow-hidden cursor-pointer group rounded-lg aspect-square"
+                        className="overflow-hidden cursor-pointer group rounded-lg aspect-square bg-gray-900"
                         variants={itemVariants}
                         whileHover={{ scale: 1.05 }}
                         transition={{ duration: 0.3 }}
                         onClick={(e) => handleImageClick(e, index)}
                     >
+                        {/* Placeholder enquanto carrega */}
+                        {!loadedImages[gallery.id] && (
+                            <div className="w-full h-full bg-linear-to-r from-gray-900 via-gray-800 to-gray-900 animate-pulse flex items-center justify-center">
+                                <div className="text-gray-600">Loading...</div>
+                            </div>
+                        )}
+
                         <img
                             src={gallery.image}
                             alt={`Gallery ${gallery.id}`}
+                            loading="lazy"
                             className="w-full h-full object-cover"
+                            onLoad={() => setLoadedImages(prev => ({
+                                ...prev,
+                                [gallery.id]: true
+                            }))}
                         />
 
                         <motion.div
@@ -137,22 +180,32 @@ const Gallery = () => {
                         transition={{ duration: 0.3 }}
                     >
                         <motion.div
-                            className="relative w-full h-5/6 md:h-4/5 max-w-2xl md:max-w-4xl"
+                            className="relative w-full h-5/6 md:h-4/5 max-w-2xl md:max-w-4xl bg-gray-900 rounded-lg flex items-center justify-center"
                             variants={modalVariants}
                             initial="hidden"
                             animate="visible"
                             exit="exit"
                             transition={{ duration: 0.3 }}
                         >
+
+                            {!loadedImages[galleryItems[selectedIndex]?.id] && (
+                                <div className="text-gray-400">Loading image...</div>
+                            )}
+
                             <motion.img
                                 src={galleryItems[selectedIndex].image}
                                 alt="Full view"
+                                loading="lazy"
                                 className="w-full h-full object-contain rounded-lg"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
                                 transition={{ duration: 0.3 }}
                                 key={selectedIndex}
+                                onLoad={() => setLoadedImages(prev => ({
+                                    ...prev,
+                                    [galleryItems[selectedIndex].id]: true
+                                }))}
                             />
 
                             <motion.button
